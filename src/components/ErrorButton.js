@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Modal, List, Card } from "antd";
 import { ExclamationCircleFilled } from "@ant-design/icons";
+import { htmlDecode } from "../../helper";
 import ErrorInfoItem from "./ErrorInfoItem";
 
 const { Meta } = Card;
@@ -34,9 +35,7 @@ function info(data, caseAttachInfos) {
                   </Card>
                 ) : (
                   <Card className="ant-col-24" bordered={false}>
-                    <pre style={{ "max-height": "200px", overflow: "auto" }}>
-                      {item.description}
-                    </pre>
+                    <pre style={{ "max-height": "200px", overflow: "auto" }} dangerouslySetInnerHTML={{ __html: htmlDecode(item.description) }} />
                   </Card>
                 )}
               </List.Item>

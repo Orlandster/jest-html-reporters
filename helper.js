@@ -184,7 +184,15 @@ const getOptions = (reporterOptions = {}) =>
     getEnvOptions()
   );
 
+const htmlDecode = (input) => {
+  const e = document.createElement('div');
+  e.innerHTML = input;
+
+  return e.childNodes.length === 0 ? '' : e.childNodes[0].nodeValue;
+}
+
 module.exports = {
+  htmlDecode,
   getOptions,
   addAttach,
   addMsg,
